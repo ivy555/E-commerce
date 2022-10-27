@@ -91,9 +91,13 @@ module.exports = {
         const page = Number(req.query.pageNumber) || 1;
 
         const searchArray = [
-            { paymentMethod: { $regex: req.query.keyword, $options: "i" } },
-            { "user.name": { $regex: req.query.keyword, $options: "i" } },
-            { "user.surname": { $regex: req.query.keyword, $options: "i" } },
+            // { paymentMethod: { $regex: req.query.keyword, $options: "i" } },
+            // { "user.name": { $regex: req.query.keyword, $options: "i" } },
+            // { "user.surname": { $regex: req.query.keyword, $options: "i" } },
+
+                  { paymentMethod: new RegExp(req.query.keyword, 'i')},
+            { "user.name" :  new RegExp(req.query.keyword, 'i')},
+            { "user.surname":  new RegExp(req.query.keyword, 'i')}
         ];
 
         //const orderId = req.query.orderId;

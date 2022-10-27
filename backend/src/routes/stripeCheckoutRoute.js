@@ -13,9 +13,22 @@ const router = express.Router()
 
 const stripeCheckoutController = require('../controllers/stripeCheckoutController')
 
+// router.post(
+//   '/api/order/:id/create-checkout-session',
+//   auth,
+//   getImageForStripeCheckoutMiddleware,
+//   stripeCheckoutController.createCheckOutSessionWithStripe,
+// )
+// // Webhook Endpoint
+// router.post(
+//   '/webhook',
+//   bodyParser.raw({ type: 'application/json' }),
+//   stripeCheckoutController.webhookStripe,
+// )
+
 router.post(
   '/api/order/:id/create-checkout-session',
-  auth,
+
   getImageForStripeCheckoutMiddleware,
   stripeCheckoutController.createCheckOutSessionWithStripe,
 )
@@ -25,5 +38,7 @@ router.post(
   bodyParser.raw({ type: 'application/json' }),
   stripeCheckoutController.webhookStripe,
 )
+
+
 
 module.exports = router

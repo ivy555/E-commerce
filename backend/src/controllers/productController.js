@@ -10,14 +10,19 @@ module.exports = {
 
         const keyword = req.query.keyword
         ? {
-              "productName.en": {
-                  $regex: req.query.keyword,
-                  $options: "i",
-              },
+            //   "productName.en": {
+            //       $regex: req.query.keyword,
+            //       $options: "i",
+            //   },
 
-              "style.en": { $regex: req.query.keyword, $options: "i" },
-              "category.en": { $regex: req.query.keyword, $options: "i" },
-              gender: { $regex: req.query.keyword, $options: "i" },
+            //   "style.en": { $regex: req.query.keyword, $options: "i" },
+            //   "category.en": { $regex: req.query.keyword, $options: "i" },
+            //   gender: { $regex: req.query.keyword, $options: "i" },
+            "productName.en": new RegExp(req.query.keyword, 'i'),
+            "style.en" : new RegExp(req.query.keyword, 'i'),
+            "category.en":  new RegExp(req.query.keyword, 'i'),
+            "gender":  new RegExp(req.query.keyword, 'i'),
+            "gender":  new RegExp(req.query.keyword, 'i')
           }
         : {};
 

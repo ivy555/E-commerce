@@ -14,23 +14,42 @@ const { matchPassword } = require("../middlewares/user");
 
 const router = express.Router();
 
-router.get("/api/user/:id?", auth, UserController.getUserAsync);
+
+router.get("/api/user/:id?", UserController.getUserAsync);
 router.patch(
     "/api/user/:id",
-    auth,
     matchPassword,
     UserController.editUserAsync
 );
-router.get("/api/user/:id/orders", auth, UserController.getUserOrders);
+router.get("/api/user/:id/orders", UserController.getUserOrders);
 
 // Admin
-router.get("/api/users", auth, adminAuth, UserController.listUserAsync);
+router.get("/api/users", UserController.listUserAsync);
 router.delete(
     "/api/user/:id/admin",
-    auth,
-    adminAuth,
     UserController.deleteUser
 );
-router.get("/api/user/:id/admin", auth, adminAuth, UserController.getUserById);
-router.patch("/api/user/:id/admin", auth, adminAuth, UserController.updateUser);
+router.get("/api/user/:id/admin",  UserController.getUserById);
+router.patch("/api/user/:id/admin",  UserController.updateUser);
 module.exports = router;
+
+// router.get("/api/user/:id?", auth, UserController.getUserAsync);
+// router.patch(
+//     "/api/user/:id",
+//     auth,
+//     matchPassword,
+//     UserController.editUserAsync
+// );
+// router.get("/api/user/:id/orders", auth, UserController.getUserOrders);
+
+// // Admin
+// router.get("/api/users", auth, adminAuth, UserController.listUserAsync);
+// router.delete(
+//     "/api/user/:id/admin",
+//     auth,
+//     adminAuth,
+//     UserController.deleteUser
+// );
+// router.get("/api/user/:id/admin", auth, adminAuth, UserController.getUserById);
+// router.patch("/api/user/:id/admin", auth, adminAuth, UserController.updateUser);
+// module.exports = router;

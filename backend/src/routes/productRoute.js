@@ -55,27 +55,48 @@ router.get(
     productController.getProductsYouMayLike
 );
 
-// Admin access only
+
+
 router.post(
     "/api/product",
-    auth,
-    adminAuth,
+    
     uploadImageMiddleware,
     productController.createProductAsync
 );
 router.patch(
     "/api/product/:id",
-    auth,
-    adminAuth,
+    
     editMiddleware,
     productController.updateProductAsync
 );
 
 router.delete(
     "/api/product/:id",
-    auth,
-    adminAuth,
+    
     productController.deleteProductAsync
 );
+
+// Admin access only
+// router.post(
+//     "/api/product",
+//     auth,
+//     adminAuth,
+//     uploadImageMiddleware,
+//     productController.createProductAsync
+// );
+// router.patch(
+//     "/api/product/:id",
+//     auth,
+//     adminAuth,
+//     editMiddleware,
+//     productController.updateProductAsync
+// );
+
+// router.delete(
+//     "/api/product/:id",
+//     auth,
+//     adminAuth,
+//     productController.deleteProductAsync
+// );
 
 module.exports = router;

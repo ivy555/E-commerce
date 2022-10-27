@@ -10,6 +10,7 @@ const router = express.Router();
 
 router.post("/api/signin", AuthController.signIn);
 router.post("/api/signup", validateHuman, AuthController.signUp);
-router.post("/api/signout", auth, AuthController.signOut);
+// router.post("/api/signout", auth, AuthController.signOut);
+router.post("/api/signout", AuthController.signOut);
 
 module.exports = router;

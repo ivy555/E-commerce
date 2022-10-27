@@ -8,9 +8,13 @@ module.exports = {
         const page = Number(req.query.pageNumber) || 1;
 
         const searchArray = [
-            { username: { $regex: req.query.keyword, $options: "i" } },
-            { memberShip: { $regex: req.query.keyword, $options: "i" } },
-            { role: { $regex: req.query.keyword, $options: "i" } },
+            // { username: { $regex: req.query.keyword, $options: "i" } },
+            // { memberShip: { $regex: req.query.keyword, $options: "i" } },
+            // { role: { $regex: req.query.keyword, $options: "i" } },
+
+            { username: new RegExp(req.query.keyword, 'i')},
+            { memberShip:  new RegExp(req.query.keyword, 'i')},
+            { role:  new RegExp(req.query.keyword, 'i')}
         ];
 
         try {
