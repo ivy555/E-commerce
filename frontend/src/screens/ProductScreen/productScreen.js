@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { listProductDetails } from "../../actions/product";
 import Loader from "../../components/loader";
 import Message from "../../components/message";
+import Rating from '../../components/rating'
 import SizeButtons from "./sizeButtons";
 import ColorButtons from "./colorButtons";
 import OtherProductInfo from "./otherProductInfo";
@@ -22,6 +23,9 @@ import {
 import { sizeTypeToInfo } from "../../Utils/size";
 import { Image } from "cloudinary-react";
 import { p } from "../../Utils/translateLibrary/productDetails";
+// import { PRODUCT_CREATE_REVIEW_RESET } from '../../actions/types'
+// import { logout } from "../../actions/user";
+
 
 const styles = {
     btn_circle: {
@@ -45,15 +49,49 @@ const ProductScreen = ({ history, match }) => {
 
     const [qty, setQty] = useState(1);
 
+    // const [rating, setRating] = useState(0)
+    // const [comment, setComment] = useState('')
+    // const [allReviews, setAllReviews] = useState([]);
+    // const [hasOrderedItem, setHasOrderedItem] = useState(false); // bool to check if the user has ordered this product
+	// const [showReviewForm, setShowReviewForm] = useState(false); 
+  
+
     const dispatch = useDispatch();
+
+   
+    // const userLogin = useSelector((state) => state.userLogin)
+    // const { userInfo } = userLogin
+
     const productDetails = useSelector((state) => state.productDetails);
     const { loading, error, product } = productDetails;
+
+    // const userDetails = useSelector((state) => state.userDetails);
+	// const { error: userLoginError } = userDetails;
+
 
     const settings = useSelector((state) => state.settings);
     const { language, currency } = settings;
 
+
+    // const productReviewCreate = useSelector((state) => state.productReviewCreate)
+    //   const {
+    //      success: successProductReview,
+    //      loading: loadingProductReview,
+    //       error: errorProductReview,
+    // } = productReviewCreate
+
+    // const orderListUser = useSelector((state) => state.orderListUser);
+	// const { orders } = orderListUser;
+
+
     useEffect(() => {
-        dispatch(listProductDetails(match.params.id));
+        // if (successProductReview) {
+        //     setRating(0)
+        //     setComment('')
+        //     dispatch({ type: PRODUCT_CREATE_REVIEW_RESET })
+        // }    
+            dispatch(listProductDetails(match.params.id))
+
     }, [dispatch, match]);
 
     const addToCartHandler = () => {
@@ -61,6 +99,25 @@ const ProductScreen = ({ history, match }) => {
             `/cart/${match.params.id}?qty=${qty}&size=${selectedSize}&=${color}`
         );
     };
+    // const submitHandler = (e) => {
+    //     e.preventDefault()
+    //     dispatch(
+    //       createProductReview(match.params.id, {
+    //         rating,
+    //         comment,
+    //       })
+    //     )
+    //   }
+    //   const writeDate = (timestamp) => {
+    //     const time = timestamp.substring(0, 10)
+    //     const [yr, mo, day] = [ parseInt(time.substring(0, 4)),
+    //                             parseInt(time.substring(5,7)),
+    //                             parseInt(time.substring(8, 10)) ]
+    //     const options = { month: 'long', day: 'numeric', year: 'numeric' }
+    //     const date = new Date(yr, mo-1, day)
+    //     const localeString = date.toLocaleDateString('en-US', options)
+    //     return localeString
+    // }
 
     const setSizeAndSizeIndex = (s) => {
         setSelectedSize(s.size);
@@ -103,7 +160,7 @@ const ProductScreen = ({ history, match }) => {
                                             >
                                                 <Image
                                                     className="d-block w-100"
-                                                    cloudName="diqw1axjb"
+                                                    cloudName="dycgvrxas"
                                                     publicId={im}
                                                     style={{
                                                         objectFit: "cover",
@@ -130,6 +187,12 @@ const ProductScreen = ({ history, match }) => {
                                     <ListGroup.Item variant="fluid">
                                         <h2>{product.productName[language]}</h2>
                                     </ListGroup.Item>
+                                     <ListGroup.Item>
+                                       <Rating
+                                          value={product.rating}
+                                          text={`${product.numReviews} reviews`}
+                                          />
+                                     </ListGroup.Item>     
                                     <ListGroup.Item>
                                         <SizeButtons
                                             product={product}
@@ -166,9 +229,14 @@ const ProductScreen = ({ history, match }) => {
                                                                 <span className="strikediag withpadding text-danger ml-2">
                                                                     {currency ===
                                                                     "jpn"
-                                                                        ? "¥"
-                                                                        : "$"}
+                                                                        ? "$"
+                                                                        : "€"}
                                                                     {
+                                                                        // {currency ===
+                                                                        //     "jpn"
+                                                                        //         ? "¥"
+                                                                        //         : "$"}
+                                                                        //     {
                                                                         product
                                                                             ?.price[
                                                                             currency
@@ -182,8 +250,12 @@ const ProductScreen = ({ history, match }) => {
                                                             <strong className="d-flex ml-2 justify-content-start">
                                                                 {currency ===
                                                                 "jpn"
-                                                                    ? "¥"
-                                                                    : "$"}
+                                                                    ? "$"
+                                                                    : "€"}
+
+"jpn"
+                                                                    {/* ? "¥"
+                                                                    : "$"} */}
                                                                 {
                                                                     product
                                                                         ?.price[
@@ -201,8 +273,8 @@ const ProductScreen = ({ history, match }) => {
                                                             <strong>
                                                                 {currency ===
                                                                 "jpn"
-                                                                    ? " ¥"
-                                                                    : " $"}
+                                                                    ? " $"
+                                                                    : " €"}
                                                                 {
                                                                     product
                                                                         ?.discount[
@@ -277,6 +349,7 @@ const ProductScreen = ({ history, match }) => {
                                             </ListGroup.Item>
                                         )}
                                     <ListGroup.Item>
+
                                         <Row>
                                             <Col md={7}>
                                                 {p.size[language]}:
@@ -343,6 +416,83 @@ const ProductScreen = ({ history, match }) => {
                             </Card>
                         </Col>
                     </Row>
+                    {/* <Row>
+                        <Col md={6}>
+                            <h4 className="mt-4 ml-2"><ins>Reviews</ins></h4>
+
+                            { (product.reviews.length === 0) && 
+                                ( <Message variant='light'>No Reviews</Message> )
+                            }
+
+                            <ListGroup variant="flush">
+                                { product.reviews.map((review) => (
+                                    <ListGroup.Item key={review._id}>
+                                        <strong>{ review.name }</strong>
+                                        <Rating value={ review.rating }
+                                                color="#B55B00"
+                                                text={ writeDate(review.createdAt) }
+                                        />
+                                        
+                                        <p className="px-1 mt-3">{ review.comment }</p>
+                                    </ListGroup.Item>
+                                ))}
+
+                                <h4 className="mt-4 ml-2">Write a Review</h4>
+                                
+                                { loadingProductReview && <Loader /> }
+                                { successProductReview && <Message variant="success">Review Submitted</Message> }
+                                { errorProductReview && <Message variant="danger">{ errorProductReview }</Message> }
+
+                                    <ListGroup.Item>
+                                        
+                                            /* <Form onSubmit={ submitHandler }>
+                                                <Form.Group className="d-flex">
+                                                    <Form.Label className="mr-3 mt-2">Rating:</Form.Label>
+                                                    <Form.Control
+                                                        as="select"
+                                                        value={ rating }
+                                                        className="w-50"
+                                                        size="text"
+                                                        onChange={(e) => setRating(e.target.value)}
+                                                    >
+                                                        <option value=''>Select...</option>
+                                                        <option value='1'>1 - Poor</option>
+                                                        <option value='2'>2 - Fair</option>
+                                                        <option value='3'>3 - Good</option>
+                                                        <option value='4'>4 - Very Good</option>
+                                                        <option value='5'>5 - Excellent</option>
+                                                    </Form.Control>
+                                                </Form.Group>
+
+                                                <Form.Group controlId="comment">
+                                                    <Form.Label className="mr-3 mt-2">Review:</Form.Label>
+                                                    <Form.Control
+                                                        as="textarea"
+                                                        rows={4}
+                                                        value={ comment }
+                                                        onChange={(e) => setComment(e.target.value)}
+                                                    ></Form.Control>
+                                                </Form.Group>
+
+                                                <Button
+                                                    disabled={ loadingProductReview }
+                                                    type="submit"
+                                                    variant="primary"
+                                                >
+                                                    Submit
+                                                </Button>
+                                            </Form>
+                                         
+                                            <Message variant='dark'>
+                                                Please <Link to="/login" >log in</Link> to write a review.
+                                            </Message>
+                                        
+                                    </ListGroup.Item>
+                            </ListGroup>
+                        </Col>
+                    </Row>  */}
+                    
+                    
                     {!loading && (
                         <Row className="mt-4">
                             <OtherProductInfo
@@ -351,6 +501,7 @@ const ProductScreen = ({ history, match }) => {
                                 pid={product?._id}
                             />
                         </Row>
+
                     )}
                 </>
             ) : loading ? (

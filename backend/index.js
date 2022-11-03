@@ -2,6 +2,7 @@ const app = require("./app");
 const express = require("express");
 const path = require("path");
 
+
 if (process.env.NODE_ENV === "production") {
     app.use(
         express.static(

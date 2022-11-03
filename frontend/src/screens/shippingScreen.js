@@ -153,8 +153,8 @@ const ShippingScreen = ({ history }) => {
                             value={country}
                         >
                             <option value="">Select a Country or Region</option>
-                            <option value="Hong Kong">Hong Kong</option>
-                            <option value="Japan">Japan</option>
+                            <option value="Deutschland">Deutschland</option>
+                            <option value="France">France</option>
                         </Form.Select>
                     </Form.Group>
                     <FormComponent
@@ -171,7 +171,7 @@ const ShippingScreen = ({ history }) => {
                         </Form.Label>
                         <InputGroup className="mb-3">
                             <InputGroup.Text>
-                                {country === "Hong Kong" ? "+852" : "+81"}
+                                {country === "Deutschland" ? "+49" : "+33"}
                             </InputGroup.Text>
                             <FormControl
                                 value={contactNum}

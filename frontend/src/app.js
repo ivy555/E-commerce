@@ -44,6 +44,8 @@ import OrderListScreen from './screens/Admin/orderListScreen'
 
 import './index.css'
 
+
+
 const App = () => {
   return (
     <Router>
@@ -53,6 +55,7 @@ const App = () => {
           {/*User authentication routes*/}
           <Route path="/login" exact component={LoginScreen} />
           <Route path="/register" exact component={RegisterScreen} />
+          {/* <Route path="/seller" exact component={RegisterScreen} /> */}
           <Route path="/profile" exact component={EditProfile} />
           <Route
             path="/profile/change-password"

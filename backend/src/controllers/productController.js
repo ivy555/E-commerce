@@ -1,5 +1,6 @@
 const { Product } = require("../models/products");
 
+
 module.exports = {
     // list all product
     async listAllProductsAsync(req, res) {
@@ -22,7 +23,7 @@ module.exports = {
             "style.en" : new RegExp(req.query.keyword, 'i'),
             "category.en":  new RegExp(req.query.keyword, 'i'),
             "gender":  new RegExp(req.query.keyword, 'i'),
-            "gender":  new RegExp(req.query.keyword, 'i')
+            // "gender":  new RegExp(req.query.keyword, 'i')
           }
         : {};
 
@@ -218,4 +219,49 @@ module.exports = {
             res.status(404).send({ message: error.message });
         }
     },
+    async createProductReview(req, res) {
+        const { rating, review } = req.body;
+        const product = await Product.findById(req.params.id);
+        if (product) {
+            // If the user has already reviewed this product, throw an error
+            const reviewedAlready = product.reviews.find(
+                (rev) => rev.user.toString() === req.user._id.toString()
+            );
+            if (reviewedAlready) {
+                res.status(400);
+                throw new Error('Product Already Reviewed');
+            }
+    
+            const newReview = {
+                name: req.user.name,
+                user: req.user._id,
+                avatar: req.user.avatar,
+                rating: Number(rating),
+                review,
+            };
+    
+            // store the new review and update the rating of this product
+            product.reviews.push(newReview);
+            product.numReviews = product.reviews.length;
+            product.rating =
+                product.reviews.reduce((acc, ele) => acc + ele.rating, 0) /
+                product.numReviews;
+            const updatedProduct = await product.save();
+            if (updatedProduct) res.status(201).json({ message: 'Review Added' });
+        } else {
+            res.status(404);
+            throw new Error('Product not available');
+        }
+    },
+        // @desc fetch top rated products
+        // @route GET /api/products/top
+        // @access PUBLIC
+     async getTopProducts(req, res) {
+	// get top 4 rated products
+	const topProducts = await Product.find({}).sort({ rating: -1 }).limit(4);
+	res.json(topProducts);
+}
+
+    
 };
+

@@ -22,11 +22,12 @@ const Header = () => {
     };
 
     return (
+        
         <header>
             <Navbar bg="light" variant="light" expand="lg" collapseOnSelect>
                 <Container>
                     <LinkContainer to="/">
-                        <Navbar.Brand>E-Commerce</Navbar.Brand>
+                        <Navbar.Brand>Honig Finder</Navbar.Brand>
                     </LinkContainer>
 
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -36,7 +37,7 @@ const Header = () => {
                             <LinkContainer to="/new-arrivals">
                                 <Nav.Link>{nav.new[language]}</Nav.Link>
                             </LinkContainer>
-                            <LinkContainer to="/men">
+                            {/* <LinkContainer to="/men">
                                 <Nav.Link>{nav.men[language]}</Nav.Link>
                             </LinkContainer>
                             <LinkContainer to="/women">
@@ -44,7 +45,7 @@ const Header = () => {
                             </LinkContainer>
                             <LinkContainer to="/kids">
                                 <Nav.Link>{nav.kid[language]}</Nav.Link>
-                            </LinkContainer>
+                            </LinkContainer> */}
                             <LinkContainer to="/discount">
                                 <Nav.Link>{nav.sale[language]}</Nav.Link>
                             </LinkContainer>

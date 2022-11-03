@@ -6,13 +6,13 @@ export const formItems = (itemName) => {
       key: 'en',
     },
     {
-      title: 'Chinese',
-      placeholder: `${itemName} in Chinese`,
+      title: 'Deutsche',
+      placeholder: `${itemName} in Deutsche`,
       key: 'cn',
     },
     {
-      title: 'Japanese',
-      placeholder: `${itemName} in Japanese`,
+      title: 'French',
+      placeholder: `${itemName} in French`,
       key: 'jpn',
     },
   ]
@@ -21,15 +21,15 @@ export const formItems = (itemName) => {
 export const priceItems = (discount) => {
   return [
     {
-      title: 'Hong Kong Dollars $',
+      title: 'Euro €',
       placeholder: `${
         discount ? 'Discounted price' : 'Price'
-      } in Hong Kong Dollars`,
+      } in EURO`,
       key: 'hkd',
     },
     {
-      title: 'Japanese Yen ¥',
-      placeholder: `${discount ? 'Discounted price' : 'Price'} in Japanese Yen`,
+      title: 'Dollar $',
+      placeholder: `${discount ? 'Discounted price' : 'Price'} in Dollar`,
       key: 'jpn',
     },
   ]
@@ -42,11 +42,11 @@ export const colorItems = () => {
       key: 'en',
     },
     {
-      placeholder: 'chinese',
+      placeholder: 'Deutsche',
       key: 'cn',
     },
     {
-      placeholder: 'japanese',
+      placeholder: 'French',
       key: 'jpn',
     },
   ]

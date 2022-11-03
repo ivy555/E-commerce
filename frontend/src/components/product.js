@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Card, Row, Col } from "react-bootstrap";
 import { Image } from "cloudinary-react";
+import Rating from './rating' ;
 
 const Product = ({ product, lang, currency, menu }) => {
     const [textColor, setTextColor] = useState("text-primary");
@@ -18,7 +19,7 @@ const Product = ({ product, lang, currency, menu }) => {
                 <Card style={{ border: "none" }}>
                     <Image
                         style={{ objectFit: "cover", border: "none" }}
-                        cloudName="diqw1axjb"
+                        cloudName="dycgvrxas"
                         publicId={product.image[0]}
                         height={400}
                         alt=""
@@ -46,6 +47,22 @@ const Product = ({ product, lang, currency, menu }) => {
                             </Card.Title>
                         </Link>
                     </Col>
+                    <Col>
+                    <Card.Text>
+                        <div className="my-1">
+                           <Rating value={ product.rating }
+                                text={ (product.numReviews === 1) ? ( `${product.numReviews} review`
+                                    ) : ( 
+                                        `${product.numReviews} reviews`
+                                    )}
+                                color={ "darkgreen" } 
+                            />
+                       </div>
+                    </Card.Text>
+
+                <Card.Text className="price-space" as="h3"></Card.Text>
+                    
+                    </Col>
 
                     <Col>
                         <Card.Text
@@ -56,24 +73,36 @@ const Product = ({ product, lang, currency, menu }) => {
                                 {product.discount[currency] > 0 ? (
                                     <Col className="d-flex justify-content-end">
                                         <span className="strikediag withpadding text-danger ml-2">
-                                            {currency === "jpn" ? "¥" : "$"}
+                                            {/* {currency === "jpn" ? "¥" : "$"} */}
+                                            {currency === "jpn" ? "$" : "€"}
                                             {product?.price[currency]}
                                         </span>
                                     </Col>
                                 ) : (
                                     <Col className="d-flex ml-2 justify-content-end">
-                                        {currency === "jpn" ? "¥" : "$"}
+                                        {currency === "jpn" ? "$" : "€"}
+                                        {/* {currency === "jpn" ? " ¥" : " $"} */}
                                         {product?.price[currency]}
                                     </Col>
                                 )}
 
                                 {product?.discount[currency] > 0 ? (
                                     <Col className="d-flex text-success ml-2 justify-content-end">
-                                        {currency === "jpn" ? " ¥" : " $"}
+                                        {currency === "jpn" ? " $" : " €"}
+                                        {/* {currency === "jpn" ? " ¥" : " $"} */}
                                         {product?.discount[currency]}{" "}
                                     </Col>
                                 ) : null}
                             </Row>
+                            {/* <div className="my-1">
+                              <Rating value={ product.rating }
+                                   text={ (product.numReviews === 1) ? ( `${product.numReviews} review`
+                                      ) : ( 
+                                        `${product.numReviews} reviews`
+                                      )}
+                                    color={ "darkgreen" } 
+                                />
+                              </div>  */}
                         </Card.Text>
                     </Col>
                 </Row>

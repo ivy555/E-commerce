@@ -7,4 +7,8 @@ export const setUserRole = [
         label: "User",
         value: "user",
     },
+    {
+        label: "Seller",
+        value: "Seller",
+    },
 ];

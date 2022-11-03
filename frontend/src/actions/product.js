@@ -33,9 +33,23 @@ import {
     PRODUCTS_YOU_MAY_LIKE_REQUEST,
     PRODUCTS_YOU_MAY_LIKE_SUCCESS,
     PRODUCTS_YOU_MAY_LIKE_FAIL,
+     
+
+    
+    PRODUCT_CREATE_REVIEW_REQUEST,
+    PRODUCT_CREATE_REVIEW_SUCCESS,
+    PRODUCT_CREATE_REVIEW_FAIL,
+    // PRODUCT_CREATE_REVIEW_RESET,
+
+
+    PRODUCT_TOP_REQUEST,
+	PRODUCT_TOP_SUCCESS,
+	PRODUCT_TOP_FAIL,
+
 } from "./types";
 import { errorHandler } from "../Utils/errorHandling";
 import { configUtil } from "../Utils/apiConfig";
+import { logout } from "./user";
 
 // Fetch all products
 export const fetchAllProducts =
@@ -252,3 +266,65 @@ export const getProductsYouMayLike =
             });
         }
     };
+
+    export const createProductReview = (productId, review) => async (
+        dispatch,
+        getState
+      ) => {
+        try {
+          dispatch({
+            type: PRODUCT_CREATE_REVIEW_REQUEST,
+          })
+      
+          const {
+            userLogin: { userInfo },
+          } = getState()
+      
+          const config = {
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${userInfo.token}`,
+            },
+          }
+      
+          await product.post(`/api/products/${productId}/reviews`, review, config)
+      
+          dispatch({
+            type: PRODUCT_CREATE_REVIEW_SUCCESS,
+          })
+        } catch (error) {
+          const message =
+            error.response && error.response.data.message
+              ? error.response.data.message
+              : error.message
+          if (message === 'Not authorized, token failed') {
+            dispatch(logout())
+          }
+          dispatch({
+            type: PRODUCT_CREATE_REVIEW_FAIL,
+            payload: message,
+          })
+        }
+      }
+      
+      export const listTopProducts = () => async (dispatch) => {
+        try {
+          dispatch({ type: PRODUCT_TOP_REQUEST })
+      
+          const { data } = await product.get(`/api/products/top`)
+      
+          dispatch({
+            type: PRODUCT_TOP_SUCCESS,
+            payload: data,
+          })
+        } catch (error) {
+          dispatch({
+            type: PRODUCT_TOP_FAIL,
+            payload:
+              error.response && error.response.data.message
+                ? error.response.data.message
+                : error.message,
+          })
+        }
+      }
+      

@@ -76,10 +76,14 @@ const FilterComponent = ({ history, type, p, pageNum, title }) => {
                         value={category}
                         onChange={(e) => categoryOnChangeHandler(e)}
                     >
-                        <option value="all">All Categories</option>
+                        {/* <option value="all">All Categories</option>
                         <option value="Shirt">Shirt</option>
                         <option value="Casual">Casual</option>
-                        <option value="Long Sleeves">Long Sleeves</option>
+                        <option value="Long Sleeves">Long Sleeves</option> */}
+                        <option value="all">All Categories</option>
+                        <option value="Shirt">Klar</option>
+                        <option value="Casual">Hell</option>
+                        <option value="Long Sleeves">Dunkel</option>
                     </Form.Select>
                 </FloatingLabel>
 
@@ -100,12 +104,12 @@ const FilterComponent = ({ history, type, p, pageNum, title }) => {
 
                 {/*Price from to */}
                 <InputGroup className="mb-3">
-                    <InputGroup.Text>From $</InputGroup.Text>
+                    <InputGroup.Text>From €</InputGroup.Text>
                     <Form.Control
                         value={priceFrom}
                         onChange={(e) => priceFromOnChangeHandler(e)}
                     />
-                    <InputGroup.Text>to $</InputGroup.Text>
+                    <InputGroup.Text>to €</InputGroup.Text>
                     <Form.Control
                         value={priceTo}
                         onChange={(e) => priceToOnChangeHandler(e)}

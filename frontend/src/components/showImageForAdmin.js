@@ -32,7 +32,7 @@ const ShowImageForAdmin = ({ source, handleRemoveImage, create }) => {
                 ) : (
                   <Image
                     className="img-lg"
-                    cloudName="diqw1axjb"
+                    cloudName="dycgvrxas"
                     publicId={source}
                     width="400"
                     height="400"

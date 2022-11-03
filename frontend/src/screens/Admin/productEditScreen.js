@@ -300,10 +300,11 @@ const ProductEditScreen = ({ match, history }) => {
                                 );
                             })}
 
-                            <h5 className="mt-4">Gender</h5>
-
+                            {/* <h5 className="mt-4">Gender</h5> */}
+                            <h5 className="mt-4">Type</h5>
                             <InputGroup size="sm" className="mb-3 my-1">
-                                <InputGroup.Text>Gender</InputGroup.Text>
+                                {/* <InputGroup.Text>Gender</InputGroup.Text> */}
+                                <InputGroup.Text>Type</InputGroup.Text>
                                 <FormControl
                                     value={gender}
                                     placeholder="Gender"
@@ -667,7 +668,7 @@ const ProductEditScreen = ({ match, history }) => {
                                     }
                                 />
                                 <FormControl
-                                    placeholder="chinese"
+                                    placeholder="deutsche"
                                     value={newColor.cn}
                                     onChange={(e) =>
                                         setNewColor({
@@ -677,12 +678,12 @@ const ProductEditScreen = ({ match, history }) => {
                                     }
                                 />
                                 <FormControl
-                                    placeholder="japanese"
+                                    placeholder="french"
                                     value={newColor.jpn}
                                     onChange={(e) =>
                                         setNewColor({
                                             ...newColor,
-                                            jpn: e.target.value,
+                                            en_US: e.target.value,
                                         })
                                     }
                                 />
@@ -745,11 +746,19 @@ const ProductEditScreen = ({ match, history }) => {
                             placeholder="Enter the material(s) of the product"
                             onChange={(e) => setMaterial(e.target.value)}
                         />
-                        <FormComponent
+                        {/* <FormComponent
                             label="Washing Care Instruction"
                             type="text"
                             value={washing_care}
                             placeholder="Enter washing care instruction"
+                            onChange={(e) => setWashing_care(e.target.value)}
+                        /> */}
+
+                         <FormComponent
+                            label="details"
+                            type="text"
+                            value={washing_care}
+                            placeholder="details"
                             onChange={(e) => setWashing_care(e.target.value)}
                         />
 

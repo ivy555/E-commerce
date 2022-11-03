@@ -117,8 +117,8 @@ const OrderListScreen = ({ history, match }) => {
                                         </td>
                                         <td>
                                             {order.currency === "HKD"
-                                                ? `HKD $ ${order.totalPrice}`
-                                                : `JPY ¥ ${order.totalPrice}`}
+                                                ? `EUR € ${order.totalPrice}`
+                                                : `DOLLAR $ ${order.totalPrice}`}
                                         </td>
                                         <td>
                                             {order.paidAt !== undefined

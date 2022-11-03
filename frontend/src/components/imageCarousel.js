@@ -22,7 +22,7 @@ const ImageCarousel = ({ images, colorIndexOnClick, carouselIndex }) => {
             <Image
               width={100}
               height={100}
-              cloudName="diqw1axjb"
+              cloudName="dycgvrxas"
               publicId={image}
               style={
                 carouselIndex === i

@@ -44,7 +44,7 @@ const ProductCarousel = () => {
                         <Link to={`/product/${product._id}`}>
                             <Image
                                 className="d-block w-100"
-                                cloudName="diqw1axjb"
+                                cloudName="dycgvrxas"
                                 publicId={product.image[0]}
                                 style={{
                                     objectFit: "cover",
@@ -54,7 +54,8 @@ const ProductCarousel = () => {
                                 <h1>
                                     <strong>
                                         {product.productName[language]}{" "}
-                                        {currency === "hkd" ? "HKD $" : "JPY ¥"}
+                                        {currency === "hkd" ? "EUR €" : "Dollar $"}
+                                        {/* {currency === "hkd" ? "HKD $" : "JPY ¥"} */}
                                         {product.price[currency]}
                                     </strong>
                                 </h1>

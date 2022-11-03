@@ -70,6 +70,7 @@ const OrderScreen = ({ history, match }) => {
 
             const script = document.createElement("script");
             script.type = "text/javascript";
+            // script.src = `https://www.paypal.com/sdk/js?client-id=${clientId}&currency=EUR`;
             script.src = `https://www.paypal.com/sdk/js?client-id=${clientId}&currency=HKD`;
             script.async = true;
             script.onload = () => {
@@ -153,6 +154,7 @@ const OrderScreen = ({ history, match }) => {
                         images: item.image[0],
                     },
                     unit_amount:
+                        // currency === "eur"
                         currency === "hkd"
                             ? item.discount
                                 ? item.discount * 100
@@ -256,7 +258,7 @@ const OrderScreen = ({ history, match }) => {
                                                 <Row>
                                                     <Col md={1}>
                                                         <Image
-                                                            cloudName="diqw1axjb"
+                                                            cloudName="dycgvrxas"
                                                             width={50}
                                                             publicId={
                                                                 item.image[0]
@@ -279,7 +281,7 @@ const OrderScreen = ({ history, match }) => {
                                                         Color: {item.color}
                                                     </Col>
                                                     <Col md={2}>
-                                                        Price: $
+                                                        Price: €
                                                         {item.discount > 0
                                                             ? item.discount
                                                             : item.price}
@@ -289,9 +291,10 @@ const OrderScreen = ({ history, match }) => {
                                                     </Col>
                                                     <Col md={2}>
                                                         ={" "}
+                                                        {/* {currency === "eur" */}
                                                         {currency === "hkd"
-                                                            ? "$"
-                                                            : " ¥"}
+                                                            ? "€"
+                                                            : " $"}
                                                         {item.discount > 0
                                                             ? item.discount *
                                                               item.qty
@@ -317,27 +320,27 @@ const OrderScreen = ({ history, match }) => {
                             <ListGroup.Item>
                                 <Row>
                                     <Col>Items</Col>
-                                    <Col>${addDecimals(order.itemsPrice)}</Col>
+                                    <Col>€{addDecimals(order.itemsPrice)}</Col>
                                 </Row>
                             </ListGroup.Item>
                             <ListGroup.Item>
                                 <Row>
                                     <Col>Shipping</Col>
                                     <Col>
-                                        ${addDecimals(order.shippingCost)}
+                                        €{addDecimals(order.shippingCost)}
                                     </Col>
                                 </Row>
                             </ListGroup.Item>
                             <ListGroup.Item>
                                 <Row>
                                     <Col>Tax</Col>
-                                    <Col>${addDecimals(order.tax)}</Col>
+                                    <Col>€{addDecimals(order.tax)}</Col>
                                 </Row>
                             </ListGroup.Item>
                             <ListGroup.Item>
                                 <Row>
                                     <Col>Total</Col>
-                                    <Col>${addDecimals(order.totalPrice)}</Col>
+                                    <Col>€{addDecimals(order.totalPrice)}</Col>
                                 </Row>
                             </ListGroup.Item>
 

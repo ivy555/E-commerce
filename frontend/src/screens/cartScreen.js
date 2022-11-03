@@ -116,7 +116,7 @@ const CartScreen = ({ match, location, history }) => {
                 <h1>{c.shoppingCart[language]}</h1>
                 <p>
                     <i className="fas fa-truck"></i>
-                    {` Orders over HKD $500 amount qualifies for
+                    {` Order over € 100  amount qualifies for
           free shipping`}
                 </p>
                 {cartItems.length === 0 ? (
@@ -147,7 +147,7 @@ const CartScreen = ({ match, location, history }) => {
                                         <Row>
                                             <Col md={2}>
                                                 <Image
-                                                    cloudName="diqw1axjb"
+                                                    cloudName="dycgvrxas"
                                                     publicId={item.image[0]}
                                                     width={100}
                                                     alt={item.name}
@@ -176,7 +176,7 @@ const CartScreen = ({ match, location, history }) => {
                                                 {sizeTypeToInfo(item.size)}
                                             </Col>
                                             <Col md={2}>
-                                                $
+                                                €
                                                 {item.discount > 0
                                                     ? item.discount
                                                     : item.price}
@@ -256,7 +256,7 @@ const CartScreen = ({ match, location, history }) => {
                                     ) {c.items[language]}
                                 </Col>
                                 <Col md={4} style={{ textAlign: "right" }}>
-                                    {currency === "hkd" ? "$" : "¥"}
+                                    {currency === "eur" ? "€" : "$"}
                                     {/*If discount */}
                                     {cartItems[0]?.discount > 0
                                         ? cartItems
@@ -280,7 +280,8 @@ const CartScreen = ({ match, location, history }) => {
                             <Row>
                                 <Col md={6}>{c.total[language]}</Col>
                                 <Col md={6} style={{ textAlign: "right" }}>
-                                    {currency === "hkd" ? "$" : "¥"}
+                                    {currency === "hkd" ? "€" : "$"}
+                                    {/* {currency === "hkd" ? "$" : "¥"} */}
                                     {/*If discount */}
                                     {cartItems[0]?.discount > 0
                                         ? cartItems

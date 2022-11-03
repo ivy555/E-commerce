@@ -1,13 +1,13 @@
 const cloudinary = require('../db/cloudinary')
 
 const uploadImageMiddleware = async (req, res, next) => {
-  let fileArr = req.body.image
+  var fileArr = req.body.image
 
-  var images = []
+  let images = []
   try {
     for (let i = 0; i < fileArr.length; i++) {
       const uploadResponse = await cloudinary.uploader.upload(fileArr[i], {
-        upload_preset: 'Dev',
+        upload_preset: 'batman007',
       })
 
       console.log('UPLOAD IMAGE MIDDLEWARE')
@@ -23,6 +23,7 @@ const uploadImageMiddleware = async (req, res, next) => {
     res.status(500).send({ message: 'Failed to upload image(s)' })
   }
 }
+ 
 
 const editMiddleware = async (req, res, next) => {
   // we need a deleted array and the new array
@@ -48,7 +49,7 @@ const editMiddleware = async (req, res, next) => {
     // to add the new once
     for (let i = 0; i < newImages.length; i++) {
       const response = await cloudinary.uploader.upload(newImages[i], {
-        upload_preset: 'Dev',
+        upload_preset: 'batman007',
       })
       newPublicIds.push(response.public_id)
     }

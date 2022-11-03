@@ -4,11 +4,19 @@ export const setLang = [
         lang: "en",
     },
     {
-        label: "Japanese",
-        lang: "jpn",
+        label: "Deutsch",
+        lang: "de",
     },
     {
-        label: "Chinese (Traditional)",
-        lang: "cn",
+        label: "French",
+        lang: "fr",
     },
+    // {
+    //     label: "Japanese",
+    //     lang: "jpn",
+    // },
+    // {
+    //     label: "Chinese (Traditional)",
+    //     lang: "cn",
+    // },
 ];

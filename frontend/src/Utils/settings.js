@@ -1,21 +1,37 @@
 export const countrySettings = [
+    // {
+    //     label: "Hong Kong",
+    //     value: "hk",
+    // },
+    // {
+    //     label: "Japan",
+    //     value: "jpn",
+    // },
     {
-        label: "Hong Kong",
-        value: "hk",
+        label: "Deutschland",
+        value: "de",
     },
     {
-        label: "Japan",
-        value: "jpn",
+        label: "France",
+        value: "fr",
     },
 ];
 
 export const currencySettings = [
     {
-        label: "Hong Kong Dollars (HKD)",
+        label: "Euro €",
         value: "hkd",
     },
     {
-        label: "Japanese Yen (YEN)",
+        label: "Dollar $",
         value: "jpn",
     },
+    // {
+    //     label: "Euro",
+    //     value: "eur",
+    // },
+    // {
+    //     label: "Dollars",
+    //     value: "en_US",
+    // },
 ];

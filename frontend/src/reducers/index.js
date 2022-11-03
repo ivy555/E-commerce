@@ -11,6 +11,8 @@ import {
     latestProductReducer,
     discountProductReducer,
     productsYouMayLikeReducer,
+    productReviewCreateReducer
+
 } from "./productReducers";
 import { cartReducer } from "./cartReducers";
 import { changeSettingsReducer } from "./settingsReducers";
@@ -49,6 +51,9 @@ export default combineReducers({
     latestProducts: latestProductReducer,
     discountedProducts: discountProductReducer,
     productsYouMayLike: productsYouMayLikeReducer,
+
+    //review reducer
+    productReviewCreateReducer : productReviewCreateReducer,
     // Cart
     cart: cartReducer,
     // Settings
@@ -96,7 +101,8 @@ const userShippingInfoFromStrage = localStorage.getItem("userShippingInfo")
 
 const settingsFromStorage = localStorage.getItem("settings")
     ? JSON.parse(localStorage.getItem("settings"))
-    : { language: "en", country: "hk", currency: "hkd" };
+    // : { language: "en", country: "hk", currency: "hkd" };
+    : { language: "en", country: "de", currency: "hkd" };
 
 export const initialState = {
     cart: {

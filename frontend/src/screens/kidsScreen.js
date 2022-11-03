@@ -36,8 +36,10 @@ const KidsScreen = ({ history, match }) => {
             <Row>
                 <Col md={8}>
                     <CardComponent
-                        title="Kid's Fashion"
-                        text="Check out our latest kid's fashion"
+                        // title="Kid's Fashion"
+                        // text="Check out our latest kid's fashion"
+                        title="Farmer's Locale Honig"
+                        text="Check out our lastest Honig"
                     />
                 </Col>
                 <Col>

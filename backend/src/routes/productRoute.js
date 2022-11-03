@@ -55,8 +55,6 @@ router.get(
     productController.getProductsYouMayLike
 );
 
-
-
 router.post(
     "/api/product",
     
@@ -75,6 +73,13 @@ router.delete(
     
     productController.deleteProductAsync
 );
+// @desc fetch top rated products
+// @route GET /api/products/top
+// @access PUBLIC
+router.get('/api/products/top', productController.getTopProducts);
+
+router.post('/api/product/:id/reviews',
+productController.createProductReview);
 
 // Admin access only
 // router.post(

@@ -76,17 +76,20 @@ export const ProductsCardComponent = ({ item, height }) => {
 
 export const cardArr = [
     {
-        title: "Men Clothes",
+        // title: "Men Clothes",
+        title: "Cremig",
         link: "/men",
         image: "/images/men_product.webp",
     },
     {
-        title: "Women Clothes",
+        // title: "Women Clothes",
+        title: "Dunkel",
         link: "/women",
         image: "/images/women_product.jpeg",
     },
     {
-        title: "Kids Clothes",
+        // title: "Kids Clothes",
+        title: "transparent",
         link: "/kids",
         image: "/images/kids_product.png",
     },

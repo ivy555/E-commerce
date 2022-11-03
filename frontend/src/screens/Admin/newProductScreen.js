@@ -26,6 +26,7 @@ import ShowImageForAdmin from '../../components/showImageForAdmin'
 
 const NewProductScreen = ({ match, history }) => {
   const langInit = { en: '', cn: '', jpn: '' }
+  // const currencyInit = { eur: '', en_US: '' }
   const currencyInit = { hkd: '', jpn: '' }
   const colorInit = { colorHex: '', color: langInit, count: 0 }
 
@@ -258,10 +259,12 @@ const NewProductScreen = ({ match, history }) => {
             <h5 className="mt-4">Gender</h5>
 
             <InputGroup size="sm" className="mb-3 my-1">
-              <InputGroup.Text>Gender</InputGroup.Text>
+              {/* <InputGroup.Text>Gender</InputGroup.Text> */}
+              <InputGroup.Text>Type</InputGroup.Text>
               <FormControl
                 value={gender}
-                placeholder="Gender"
+                // placeholder="Gender"
+                placeholder="Type"
                 onChange={(e) => setGender(e.target.value)}
               />
             </InputGroup>
@@ -460,6 +463,8 @@ const NewProductScreen = ({ match, history }) => {
                       <FormControl value={c.en} readOnly />
                       <FormControl value={c.cn} readOnly />
                       <FormControl value={c.jpn} readOnly />
+                      {/* <FormControl value={c.de} readOnly />
+                      <FormControl value={c.en_US} readOnly /> */}
                       <FormControl value={colorsHex[i]} readOnly />
                       <FormControl
                         className="py-2"
@@ -555,11 +560,18 @@ const NewProductScreen = ({ match, history }) => {
                 onChange={(e) => setMaterial(e.target.value)}
               />
 
-              <FormComponent
+              {/* <FormComponent
                 label="Washing Care Instruction"
                 type="text"
                 value={washing_care}
                 placeholder="Enter washing care instruction"
+                onChange={(e) => setWashing_care(e.target.value)}
+              /> */}
+                 <FormComponent
+                label="details"
+                type="text"
+                value={washing_care}
+                placeholder="details"
                 onChange={(e) => setWashing_care(e.target.value)}
               />
 

@@ -132,7 +132,7 @@ const PlaceOrderScreen = ({ history }) => {
                                                 <Row>
                                                     <Col md={1}>
                                                         <Image
-                                                            cloudName="diqw1axjb"
+                                                            cloudName="dycgvrxas"
                                                             publicId={
                                                                 item.image[0]
                                                             }
@@ -168,9 +168,10 @@ const PlaceOrderScreen = ({ history }) => {
                                                             ]
                                                         }
                                                         :{" "}
+                                                        {/* {currency === "eur" */}
                                                         {currency === "hkd"
-                                                            ? "$"
-                                                            : "¥"}
+                                                            ? "€"
+                                                            : "$"}
                                                         {item.discount > 0
                                                             ? item.discount
                                                             : item.price}
@@ -179,7 +180,7 @@ const PlaceOrderScreen = ({ history }) => {
                                                         x{item.qty}
                                                     </Col>
                                                     <Col md={2}>
-                                                        = $
+                                                        = €
                                                         {item.discount > 0
                                                             ? item.discount *
                                                               item.qty
@@ -205,25 +206,25 @@ const PlaceOrderScreen = ({ history }) => {
                             <ListGroup.Item>
                                 <Row>
                                     <Col>{summary.items[language]}</Col>
-                                    <Col>${cart.itemsPrice}</Col>
+                                    <Col>€{cart.itemsPrice}</Col>
                                 </Row>
                             </ListGroup.Item>
                             <ListGroup.Item>
                                 <Row>
                                     <Col>{summary.shippingFee[language]}</Col>
-                                    <Col>${cart.shippingCost}</Col>
+                                    <Col>€{cart.shippingCost}</Col>
                                 </Row>
                             </ListGroup.Item>
                             <ListGroup.Item>
                                 <Row>
                                     <Col>{summary.tax[language]}</Col>
-                                    <Col>${cart.tax}</Col>
+                                    <Col>€{cart.tax}</Col>
                                 </Row>
                             </ListGroup.Item>
                             <ListGroup.Item>
                                 <Row>
                                     <Col>{summary.total[language]}</Col>
-                                    <Col>${cart.totalPrice}</Col>
+                                    <Col>€{cart.totalPrice}</Col>
                                 </Row>
                             </ListGroup.Item>
                             <ListGroup.Item>

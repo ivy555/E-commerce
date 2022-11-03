@@ -37,8 +37,10 @@ const MenScreen = ({ history, match }) => {
             <Row>
                 <Col md={8}>
                     <CardComponent
-                        title="Mens's Fashion"
-                        text="Check out our lastest men's fashion"
+                        // title="Mens's Fashion"
+                        // text="Check out our lastest men's fashion"
+                        title="Farmer's Locale Honig"
+                        text="Check out our lastest Honig"
                     />
                 </Col>
                 <Col>
