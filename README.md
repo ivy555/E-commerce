@@ -5,7 +5,7 @@
 E-commerce web app build with React.js, Node.js, Express.js, MongoDB (MERN Stack).
 
 ## Deployed Version
-Check it out! [click me!](https://e-shop-clothings.herokuapp.com)
+Check it out! 
 
 ### Home Page
 ![screenshot](/image/home.png)
